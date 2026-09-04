@@ -28,7 +28,7 @@ public class Duration implements Comparable<Duration> {
 	// annotate it "@Override" as here, overriding Object#equals(Object)
 	@Override // implementation
 	public boolean equals(Object x) {
-		return false; // TODO 
+		return this == x;
 	}
 	
 	@Override // implementation
