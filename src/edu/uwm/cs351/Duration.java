@@ -15,6 +15,13 @@ public class Duration implements Comparable<Duration> {
 	
 	// TODO: For all constants, have a line:
 	// public static final Duration CONSTANT = new Duration(...);
+	public static final Duration INSTANTANEOUS = new Duration(0);
+	public static final Duration MILLISECOND = new Duration(1);
+	public static final Duration SECOND = new Duration(1000);
+	public static final Duration MINUTE = new Duration(60000);
+	public static final Duration HOUR = new Duration(60 * 60 * 1000);
+	public static final Duration DAY = new Duration(HOUR.extent * 24);
+	public static final Duration YEAR = DAY.scale(365.25);
 
 	
 	// If you are overriding a method from a super class, always
@@ -56,4 +63,16 @@ public class Duration implements Comparable<Duration> {
 	
 	// TODO: three other public methods: subtract, scale & divide
 	// Don't forget to write documentation comments.
+	
+	public Duration subtract(Duration other) {
+		return null; // TODO
+	}
+	
+	public Duration scale(double amt) {
+		return null; // TODO
+	}
+	
+	public double divide(Duration d) {
+		return 0.0; // TODO
+	}
 }

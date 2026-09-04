@@ -13,6 +13,7 @@ public class Time implements Comparable<Time> {
 	// TODO: data structure for Time (very simple)
 	// The solution also has a private constructor,
 	// which is very useful.
+	private long point;
 	
 	/**
 	 * Create a time for now.
@@ -74,5 +75,11 @@ public class Time implements Comparable<Time> {
 		Calendar cal = Calendar.getInstance();
 		cal.setTimeInMillis(point);
 		return cal;
+	}
+
+	@Override
+	public int compareTo(Time o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
