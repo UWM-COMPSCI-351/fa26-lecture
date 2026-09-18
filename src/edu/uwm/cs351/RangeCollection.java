@@ -2,6 +2,7 @@ package edu.uwm.cs351;
 
 import java.util.AbstractCollection;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class RangeCollection extends AbstractCollection<Integer> {
 	private final int lo, hi;
@@ -28,16 +29,18 @@ public class RangeCollection extends AbstractCollection<Integer> {
 
 	private class MyIterator implements Iterator<Integer> {
 
+		private int current = lo-1;
+		
 		@Override
 		public boolean hasNext() {
-			// TODO Auto-generated method stub
-			return false;
+			return (current+1) < hi;
 		}
 
 		@Override
 		public Integer next() {
-			// TODO Auto-generated method stub
-			return null;
+			if (!hasNext()) throw new NoSuchElementException("no more");
+			++current;
+			return current;
 		}
 		
 	}
