@@ -11,7 +11,7 @@ public class TestArrayCollection extends AbstractTestCollection<String> {
 		ArrayCollection<Integer> ac = new ArrayCollection<>();
 		ac.add(Integer.valueOf(42));
 		
-		Integer[] result = (Integer[])ac.toArray();
+		Integer[] result = ac.toArray();
 		System.out.println("a[0] = " + result[0]);
 	}
 }
