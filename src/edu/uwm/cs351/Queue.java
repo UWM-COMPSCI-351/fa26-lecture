@@ -45,10 +45,23 @@ public class Queue<E> {
 		return front == rear;
 	}
 	
+	public int size() {
+		if (front <= rear) return rear-front;
+		return data.length - 1 - (front-rear);
+	}
+	
 	public void enqueue(E elem) {
 		ensureCapacity(size()+2);
 		data[rear] = elem;
 		++rear;
 		if (rear == data.length) rear = 0;
+	}
+	
+	public E front() {
+		return null; // TODO
+	}
+	
+	public E dequeue() {
+		return null; // TODO
 	}
 }
