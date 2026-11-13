@@ -97,7 +97,7 @@ public class TestArrayMap extends TestCase {
 		while (!(e = it.next()).getValue().equals("rat")) {
 			// nothing
 		}
-		e.setValue("ferret");
+		assertEquals("rat", e.setValue("ferret"));
 		assertEquals("ferret", array[2]);
 	}
 	

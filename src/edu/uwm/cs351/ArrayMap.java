@@ -3,6 +3,7 @@ package edu.uwm.cs351;
 import java.util.AbstractMap;
 import java.util.AbstractSet;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class ArrayMap<V> extends AbstractMap<Integer,V> {
@@ -14,11 +15,23 @@ public class ArrayMap<V> extends AbstractMap<Integer,V> {
 	}
 
 	
-	@Override
+	@Override // implementation
 	public V put(Integer key, V value) {
 		V oldValue = data[key];
 		data[key] = value;
 		return oldValue;
+	}
+
+
+	@Override // efficiency
+	public V get(Object key) {
+		if (key instanceof Integer) {
+			Integer index = (Integer)key;
+			if (index < data.length && index >= 0) {
+				return data[index];
+			}
+		}
+		return null;
 	}
 
 
@@ -52,6 +65,7 @@ public class ArrayMap<V> extends AbstractMap<Integer,V> {
 
 		@Override
 		public Entry<Integer, V> next() {
+			if (!hasNext()) throw new NoSuchElementException("no more");
 			++index;
 			return new DefaultEntry<>(index,data[index]);
 		}
