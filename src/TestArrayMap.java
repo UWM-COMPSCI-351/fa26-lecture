@@ -78,4 +78,14 @@ public class TestArrayMap extends TestCase {
 	public void test8() {
 		assertNull(am.get(null));
 	}
+	
+	public void test9() {
+		Iterator<Map.Entry<Integer, String>> it = am.entrySet().iterator();
+		Map.Entry<Integer, String> e;
+		while (!(e = it.next()).getValue().equals("rat")) {
+			// nothing
+		}
+		e.setValue("ferret");
+		assertEquals("ferret", array[2]);
+	}
 }
