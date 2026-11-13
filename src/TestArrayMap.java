@@ -1,5 +1,6 @@
 import java.util.Iterator;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import edu.uwm.cs351.ArrayMap;
@@ -7,6 +8,17 @@ import edu.uwm.cs351.DefaultEntry;
 import junit.framework.TestCase;
 
 public class TestArrayMap extends TestCase {
+	protected <T> void assertException(Class<?> excClass, Runnable f) {
+		try {
+			f.run();
+			assertFalse("Should have thrown an exception, not returned",true);
+		} catch (RuntimeException ex) {
+			if (!excClass.isInstance(ex)) {
+				ex.printStackTrace();
+				assertFalse("Wrong kind of exception thrown: "+ ex.getClass().getSimpleName(),true);
+			}
+		}		
+	}
 
 	private String[] array;
 	private ArrayMap<String> am;
@@ -87,5 +99,16 @@ public class TestArrayMap extends TestCase {
 		}
 		e.setValue("ferret");
 		assertEquals("ferret", array[2]);
+	}
+	
+	public void testa() {
+		Iterator<Map.Entry<Integer, String>> it = am.entrySet().iterator();
+		
+		it.next();
+		it.next();
+		it.next();
+		it.next();
+		
+		assertException(NoSuchElementException.class, () -> it.next());
 	}
 }
